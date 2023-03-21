@@ -1,0 +1,85 @@
+
+from __future__ import division 
+from collections import Counter
+from collections import defaultdict
+​
+users = [{"id": 0, "name": "Hero"},
+         {"id": 1, "name": "Dunn"},
+         {"id": 2, "name": "Sue"},
+         {"id": 3, "name": "Chi"},
+         {"id": 4, "name": "Thor"},
+         {"id": 5, "name": "Clive"},
+         {"id": 6, "name": "Hicks"},
+         {"id": 7, "name": "Devin"},
+         {"id": 8, "name": "Kate"},
+         {"id": 9, "name": "Klein"}]
+friendships = [(0, 1), (0, 2), (1, 2), (1, 3), (2, 3), (3, 4), (4, 5), (5, 6), (5, 7), (6, 8), (7, 8), (8, 9)]
+for user in users: # inicia uma dict com uma lista vazia
+    user["friends"] = []
+for i, j in friendships:# loop pelos pares de amigos
+    users[i]["friends"].append(users[j]) # adiciona i ao amigo de j
+    users[j]["friends"].append(users[i]) # Adiciona j ao amigo de i
+​
+friendships
+[(0, 1),
+ (0, 2),
+ (1, 2),
+ (1, 3),
+ (2, 3),
+ (3, 4),
+ (4, 5),
+ (5, 6),
+ (5, 7),
+ (6, 8),
+ (7, 8),
+ (8, 9)]
+def number_of_friends(user):
+    """Quantos amigos tem o _user_ ?"""
+    user_id = user['id']
+    friend_ids = friendships[user_id]
+    return len(user["friends"]) # tamanho da lista de usuarios
+total_connections = sum(number_of_friends(user) for user in users)
+num_users = len(users)
+avg_connections = total_connections / num_users
+avg_connections
+2.4
+# criando uma lista (user_id, number_of_friends)
+num_friends_by_id = [(user["id"], number_of_friends(user)) for user in  users]
+# Classificando a lista do maior para o menor
+num_friends_by_id.sort(reverse=True)
+num_friends_by_id
+[(9, 1),
+ (8, 3),
+ (7, 2),
+ (6, 2),
+ (5, 3),
+ (4, 2),
+ (3, 3),
+ (2, 3),
+ (1, 3),
+ (0, 2)]
+ coletando amigos de amigos
+def foaf_ids_bad(user):
+    """
+    This returns certain friends of friends multiple times and also returns friends of friends
+    that are already friends of _user_
+    """
+    #"foaf" abreviaçaõ de amigo de amigo
+    #  para cada um dos amigos do usuário, obtenha cada um dos amigos
+    return[foaf_id for friend_id in friendships[user['id']] for foaf_id in friendships[friend_ids]]
+print(friendships[8])# amigo de amigo
+(5, 7)
+def not_the_same(user, other_user):
+    """two users are not the same if they have different ids"""
+    return user['id'] != other_user['id']
+​
+# Gerando contagem de amigos em comum
+def friends_of_friend_ids(user):
+    return Counter(foaf["id"] for friend in user["friends"]
+                   for foaf in friend["friends"]
+                   if not_the_same(user, foaf) and not_friends(user, foaf))
+​
+# Amigo do amigo
+print (friends_of_friend_ids(users[3]))
+Counter({0: 2, 5: 1})
+# essa operação informa que a Chi[3] possui dois amigos em comum com Hero[0] e 1 comClive[5]
