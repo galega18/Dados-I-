@@ -1,0 +1,34 @@
+# encontrando usuarios com o mesmo interesse
+def data_scientists_who_like(target_interest):
+    # não é muito eficiente, pois toda a lista de pares de usuários e interesses deve ser
+    # examinado para cada pesquisa
+    return [user_id for user_id, user_interest in interests 
+            if user_interest == target_interest]
+            
+            # encontrando usuarios com o mesmo interesse
+def data_scientists_who_like(target_interest):
+    # não é muito eficiente, pois toda a lista de pares de usuários e interesses deve ser
+    # examinado para cada pesquisa
+    return [user_id for user_id, user_interest in interests 
+            if user_interest == target_interest]
+            
+            # encontrando usuarios com o mesmo interesse
+def data_scientists_who_like(target_interest):
+    # não é muito eficiente, pois toda a lista de pares de usuários e interesses deve ser
+    # examinado para cada pesquisa
+    return [user_id for user_id, user_interest in interests 
+            if user_interest == target_interest]
+            
+            # encontrando usuarios com o mesmo interesse
+def data_scientists_who_like(target_interest):
+    # não é muito eficiente, pois toda a lista de pares de usuários e interesses deve ser
+    # examinado para cada pesquisa
+    return [user_id for user_id, user_interest in interests 
+            if user_interest == target_interest]
+            
+            # encontrando usuarios com o mesmo interesse
+def data_scientists_who_like(target_interest):
+    # não é muito eficiente, pois toda a lista de pares de usuários e interesses deve ser
+    # examinado para cada pesquisa
+    return [user_id for user_id, user_interest in interests 
+            if user_interest == target_interest]
